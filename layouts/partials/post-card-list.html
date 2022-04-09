@@ -1,0 +1,49 @@
+<article class="post-card">
+
+  {{if .Params.image}}
+  <a class="post-card-image-link" href="{{ .Permalink }}">
+      <img class="post-card-image" src="{{.Params.image | absURL}}"  alt="{{ .Title }}">
+  </a>
+  {{else}}
+  <a class="post-card-image-link" href="{{ .Permalink }}">
+      <img class="post-card-image" src="{{ .Site.Params.cover | absURL }}" alt="{{ .Title }}">
+  </a>
+  {{end}}
+  
+      <div class="post-card-content">
+          <a class="post-card-content-link" href="{{ .Permalink }}">
+              <header class="post-card-header">
+                  {{ with .Params.tags }}
+                      {{ $primaryTag := (index . 0) }}
+                      <div class="post-card-primary-tag">{{ $primaryTag }}</div>
+                  {{ end }}
+                  <h2 class="post-card-title">{{ .Title }}</h2>
+              </header>
+              <div class="post-card-excerpt">             
+                  <p>{{ .Summary | plainify | safeHTML }}{{ if .Truncated}} {{end}}</p>
+              </div>
+          </a>
+
+          <footer class="post-card-meta">
+            {{ $author := index .Site.Data.authors (.Params.author | default "default") }}
+              <ul class="author-list">
+                  <li class="author-list-item">
+                      <a href="/authors/{{ $author.name }}" class="static-avatar">
+                        <img  class="author-profile-image" src="{{ $author.avatar | absURL}}" alt="{{ $author.fullname }}"/>
+                      </a>
+                  </li>
+              </ul>
+              <div class="post-card-byline-content">
+                  <span class="post-card-byline-author">
+                  <a href="/authors/{{ $author.name }}">
+                      {{ $author.fullname }}
+                   </a>
+                  </span>
+                      <span class="post-card-byline-date"><time datetime="{{ .Date.Format "2006-31-01" }}">{{ .Date.Format "2 January 2006" }}</time>
+                          <span class="bull">&bull;</span> {{ .ReadingTime }} min read</span>
+                  </div>
+              </footer>
+
+      </div>
+
+</article>

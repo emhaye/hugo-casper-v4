@@ -1,0 +1,15 @@
+{{ with .Params.tags }}
+    {{ $primaryTag := (index . 0) }}
+    <article class="read-next-card">
+
+        <div class="read-next-card-content">
+
+                {{ range first 1 (where (index $.Site.Taxonomies.tags $primaryTag).Pages "Section" "post") }}
+                <div>
+                    {{- partial "post-card-list.html" . -}}
+                </div>
+                {{ end }}
+            </ul>
+        </div>
+    </article>
+{{ end }}

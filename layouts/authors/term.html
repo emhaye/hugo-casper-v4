@@ -1,0 +1,12 @@
+{{ define "body_class" }} author-template  {{ end }}
+
+{{ define "main" }}
+{{ partial "header-author" . }}
+        <div class="post-feed">
+            {{ range $index, $element := .Pages }}
+                {{ partial "post-card-list.html" . }}
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

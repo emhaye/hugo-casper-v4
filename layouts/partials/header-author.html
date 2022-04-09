@@ -1,0 +1,58 @@
+{{- $author := index .Site.Data.authors ($.Params.author | default "default") -}}
+
+
+    <section class="outer">
+        <div class="inner posts">
+            <header class="author-profile">
+            <div class="author-profile-content">
+                <img class="author-profile-pic" src="{{ $author.avatar }}" alt="{{ $author.fullname }}" />
+                <div class="author-profile-meta">
+                    <h1 class="site-title">
+                        {{ $author.fullname }}
+                    </h1>
+                    {{ if $author.bio }}
+                        <p>
+                            {{ $author.bio }}
+                        </p>
+                    {{ else }}
+                        <p>
+                            {{ len .Pages }} post{{ if gt (len .Pages) 1 }}s{{ end }}
+                        </p>
+                    {{ end }}
+                    <div class="author-profile-location">
+                        {{ $author.location }}
+                    </div>
+                </div>
+                {{ if $author.website }}
+                    <span class="author-social-link">
+                        <a href="{{ $author.website }}" target="_blank" rel="noopener">
+                            Website
+                        </a>
+                    </span>
+                {{ end }}
+                &bull;
+                {{ if $author.github }}
+                    <span class="author-social-link">
+                        <a href="https://github.com/{{ $author.github }}" target="_blank" rel="noopener">
+                            Github
+                        </a>
+                    </span>
+                {{ end }}
+                &bull;
+                {{ if $author.twitter }}
+                    <span class="author-social-link">
+                        <a href="https://twitter.com/{{ $author.twitter }}" target="_blank" rel="noopener">
+                            Twitter
+                        </a>
+                    </span>
+                {{ end }}
+                &bull;
+                {{ if $author.facebook }}
+                    <span class="author-social-link">
+                        <a href="https://facebook.com/{{ $author.facebook }}" target="_blank" rel="noopener">
+                            Facebook
+                        </a>
+                    </span>
+                {{ end }}
+            </div>
+        </header>

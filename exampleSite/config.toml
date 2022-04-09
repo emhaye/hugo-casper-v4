@@ -1,0 +1,104 @@
+baseurl           = "/"
+theme             = "hugo-casper-v4"
+languageCode      = "en-US"
+disqusShortname   = "huo-casper-v4"
+enableRobotsTXT   = true
+canonifurls       = true
+Title             = "Hugo Casper V4: Just a demo site for the Casper4 theme ported to Hugo"
+summaryLength     = "30"
+background       = "/images/content.jpg"
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.blackFriday]
+    angledQuotes = false
+    footnoteAnchorPrefix = ""
+    footnoteReturnLinkContents = ""
+    fractions = true
+    hrefTargetBlank = false
+    latexDashes = true
+    nofollowLinks = false
+    noreferrerLinks = false
+    plainIDAnchors = true
+    skipHTML = false
+    smartDashes = true
+    smartypants = true
+    smartypantsQuotesNBSP = false
+    taskLists = true
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+    [markup.goldmark.parser]
+      attribute = true
+      autoHeadingID = true
+    [markup.goldmark.renderer]
+      hardWraps = false
+      unsafe = true
+      xHTML = false
+  [markup.highlight]
+    codeFences = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "monokai"
+    tabWidth = 4
+  [markup.tableOfContents]
+    endLevel = 3
+    startLevel = 2
+
+[params]
+  title       = "Hugo Casper V4"
+  subtitle    = "Just a demo site for the Casper4 theme ported to Hugo"
+  copyright   = "2019"
+  favicon     = "/images/favicon.ico"
+  cover       = "/img/blog-cover.jpg"
+  description = "Just a demo site for the Casper4 theme ported to Hugo"
+  metaDescription = ""
+  keywords = "hugo, static site, themes"
+  customCSS = []
+  RSSLink = "/index.xml"
+
+  twitterName = "emhaye_"
+  fbName = "emhaye.mhy"
+  githubName = "emhaye"
+
+  logoFloat = "/images/logo.png"
+  orgName = "XecOps"
+  orgWebsite = "https://xecops.com"
+  orgDescription = "Jép Kupie Nak Bek Pungoe"
+
+  pageNotFoundTitle = "404 - Page not found"
+
+  show_reading_time = true
+  
+  hjsStyle = "base16/tomorrow-night"
+
+[taxonomies]
+author = "authors"
+tag = "tags"
+category = "categories"
+
+[permalinks]
+  post = "/:slug/"
+  author = "/authors/"
+  tag = "/tags/:slug"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+
+[sitemap]
+  ChangeFreq = ""
+  Filename = "sitemap.xml"
+  Priority = "-1"

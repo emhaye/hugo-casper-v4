@@ -1,0 +1,29 @@
+{{ define "body_class" }} tag-template  {{ end }}
+
+{{ define "main" }}
+<main id="site-main" class="site-main outer">
+    <div class="inner posts">
+        <div class="post-feed">
+            <section class="post-card post-card-large">
+            <div class="post-card-content">
+                <div class="post-card-content-link">
+                    <header class="post-card-header">
+                        <div class="post-card-primary-tag">Taggged</div>
+                            <h2 class="post-card-title">{{ .Title | humanize }}</h2>
+                    </header>
+                    <div class="post-card-excerpt">
+                        <p>
+                            A collection of {{ len .Pages }} post{{ if gt (len .Pages) 1 }}s{{ end }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+            {{ range $index, $element := .Pages }}
+                {{ partial "post-card-list.html" . }}
+            {{ end }}
+        </div>
+    </div>
+</main>
+
+{{ end }}

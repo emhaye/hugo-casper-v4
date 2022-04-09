@@ -1,0 +1,24 @@
+{{ define "body_class" }} post-template {{ end }}
+
+{{ define "main" }}
+
+<main id="site-main" class="site-main">
+    <article class="article ">
+        <header class="article-header gh-canvas">
+            <h1 class="article-title">{{ .Title }}</h1>
+            {{if .Params.image}}
+            <figure class="article-image">
+                <img src="{{.Params.image | absURL}}">
+            </figure>
+            {{end}}
+        </header>
+        <section class="gh-content gh-canvas">
+            <h1 class="article-title"></h1>
+            {{ .Content }}
+        </section>
+
+    </article>
+
+</main>
+
+{{ end }}

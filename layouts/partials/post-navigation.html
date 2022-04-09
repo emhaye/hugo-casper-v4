@@ -1,0 +1,15 @@
+
+<aside class="read-more-wrap">
+        <div class="read-more inner">
+
+            {{- partial "read-next.html" . -}}
+            
+            {{ with .PrevInSection}}
+                {{- partial "post-card-list.html" . -}}
+            {{end}}
+
+            {{ with .NextInSection}}
+                {{- partial "post-card-list.html" . -}}
+            {{end}}
+        </div>
+</aside>

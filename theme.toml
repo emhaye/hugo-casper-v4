@@ -1,0 +1,19 @@
+name = "casper3"
+license = "MIT"
+licenselink = "https://github.com/emhaye/hugo-casper-v4/blob/master/LICENSE"
+description = "The default Casper version 4 theme from Ghost CMS ported over to Hugo"
+tags = ["blog", "dark", "light"]
+features = ["darkmode"]
+min_version = "0.96.0"
+
+[author]
+  name = "Mahyuddin"
+  homepage = "https://xecops.com"
+  repo = "https://github.com/emhaye/hugo-casper-v4"
+
+[original]
+  name = "Ghost"
+  homepage = "https://ghost.org"
+  repo = "https://github.com/TryGhost/Casper"
+
+  

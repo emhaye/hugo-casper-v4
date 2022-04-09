@@ -1,0 +1,22 @@
+{{ define "body_class" }} {{ end }}
+
+{{ define "main" }}
+
+<main class="site-main error-content">
+  <div class="inner">
+    <section class="error-message">
+      <h1 class="error-code">404</h1>
+      <p class="error-description">Page not found</p>
+      <a class="error-link" href="{{"/"|absURL}}">Go to the front page →</a>
+    </section>
+
+  <aside class="read-more-wrap">
+    <div class="read-more inner">
+          {{ range $index, $element := .Site.RegularPages | first 3 }}
+            {{ partial "post-card-list.html" . }}
+          {{ end }}
+    </div>
+  </aside>
+</main>
+
+{{ end }}

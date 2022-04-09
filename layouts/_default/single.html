@@ -1,0 +1,56 @@
+{{ define "body_class" }} post-template {{ end }}
+
+{{ define "main" }}
+
+<main id="site-main" class="site-main">
+    <article class="article ">
+        <header class="article-header gh-canvas">
+            {{ with .Params.tags }}
+            {{ $primaryTag := (index . 0) }}
+            <section class="article-tag">
+                <a href="{{ "/tags/" | relLangURL }}{{ $primaryTag | urlize }}">{{ $primaryTag }}</a>
+            </section>
+            {{ end }}
+            <h1 class="article-title">{{ .Title }}</h1>
+            {{ if .Param "summary" }}
+            <p class="article-excerpt">{{ .Summary }}</p>
+            {{ end }}
+            <div class="article-byline">
+                <section class="article-byline-content">
+                    {{ $author := index .Site.Data.authors (.Params.author | default "default") }}
+                    {{ partial "post-author" . }}
+                    <div class="article-byline-meta">
+                        <h4 class="author-name">
+                            <a href="/authors/{{ $author.name }}">
+                                {{ $author.fullname }}
+                            </a>
+                        </h4>
+                        <div class="byline-meta-content">
+                            <time class="byline-meta-date"
+                                datetime="{{.Date.Format "2006-31-01"}}">{{.Date.Format "2 January 2006"}}</time>
+                            <span class="byline-reading-time"><span class="bull">&bull;</span> {{ .ReadingTime }} min
+                                read</span>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+            {{if .Params.image}}
+            <figure class="article-image">
+                <img src="{{.Params.image | absURL}}">
+            </figure>
+            {{end}}
+        </header>
+        <section class="gh-content gh-canvas">
+            <h1 class="article-title"></h1>
+            {{ .Content }}
+            {{ partial "disqus" . }}
+        </section>
+        
+    </article>
+
+</main>
+
+{{- partial "post-navigation.html" . -}}
+
+{{ end }}

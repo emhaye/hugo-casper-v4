@@ -1,0 +1,37 @@
+{{ $author := index .Site.Data.authors (.Params.author | default "default") }}
+<script type="application/ld+json">
+  {
+      "@context" : "http://schema.org",
+      "@type" : "Blog",
+      "mainEntityOfPage": {
+           "@type": "WebPage",
+           "@id": "{{ .Site.BaseURL }}"
+      },
+      "articleSection" : "{{ .Section }}",
+      "name" : "{{ .Title }}",
+      "headline" : "{{ .Title }}",
+      "image": ["{{ .Params.image | absURL }}"],
+      "description" : "{{ if .Site.Params.metaDescription }}{{ .Site.Params.metaDescription }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ end }}{{ end }}",
+      "inLanguage" : "en-US",
+      "creator" : "{{ $author.fullname }}",
+      "author": {
+		    "@type": "Person",
+		    "name": "{{ $author.fullname }}"
+	    },
+	    "publisher": {
+		    "@type": "Organization",
+		    "name": "{{ .Site.Params.orgName }}",
+		    "logo": {
+			    "@type": "ImageObject",
+			    "url": "{{ .Site.Params.logo | absURL }}"
+	  	  }
+	    },
+      "accountablePerson" : "{{ $author.fullname }}",
+      "copyrightHolder" : "{{ $author.fullname }}",
+      "copyrightYear" : "{{ .Date.Format "2006" }}",
+      "datePublished": "{{ .Date }}",
+      "dateModified" : "{{ .Date }}",
+      "url" : "{{ .Permalink }}",
+      "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"Blog", "Aceh", "DevOps", "Security", "Engineer", "SysAdmin", "Linux", "FLOSS Enthusiast", "Coffee" ]
+  }
+</script>

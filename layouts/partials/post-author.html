@@ -1,0 +1,8 @@
+{{ $author := index .Site.Data.authors (.Params.author | default "default") }}
+<ul class="author-list">
+    <li class="author-list-item">
+        <a href="/authors/{{ $author.name }}" class="author-avatar">
+            <img class="author-profile-image" src="{{ $author.avatar | absURL }}" alt="{{ $author.fullname }}" />
+        </a>
+    </li>
+</ul>

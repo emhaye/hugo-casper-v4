@@ -1,0 +1,29 @@
+{{ define "body_class" }} home-template {{ end }}
+
+{{ define "main" }}
+
+<div class="site-header-content">
+
+    {{- partial "header-background.html" . -}}
+    <h1 class="site-title">
+        {{ if $.Site.Params.logo }}
+            <img class="gh-head-logo" src="{{ $.Site.Params.logo }}" alt="{{ .Site.Title }}" />
+        {{ else }}
+            {{ $.Site.Params.title }}
+        {{ end }}
+    </h1>
+    <p>{{ $.Site.Params.description }}</p>
+</div>
+
+<main id="site-main" class="site-main outer">
+    <div class="inner posts">
+        <div class="post-feed">
+            {{ $pages := where site.RegularPages "Type" "post" }}
+            {{ range $index, $element := $pages }}
+                {{ partial "post-card.html" . }}
+            {{ end }}
+        </div>
+    </div>
+</main>
+
+{{ end }}
